@@ -47,8 +47,11 @@ export class STACService {
     /**
      * get collection informations
      */
-    public async getCollectionInfo(url, collection): Promise<any> {
+    public async getCollectionInfo(url, collection, token = null): Promise<any> {
         let urlSuffix = `/collections/${collection}`
+        if (token) {
+            urlSuffix = `${urlSuffix}?access_token=${token}`
+        }
         const response = await this.http.get(`${url}${urlSuffix}`).toPromise()
         return response;
     }

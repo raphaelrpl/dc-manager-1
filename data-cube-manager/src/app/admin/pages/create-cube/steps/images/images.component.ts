@@ -347,7 +347,7 @@ export class CreateCubeImagesComponent implements OnInit {
 
   async getBandsAndSaveinStore(collection, satellite, urlSTAC, startDate, lastDate, tiles, token) {
     try {
-      const respCollection = await this.ss.getCollectionInfo(urlSTAC, collection)
+      const respCollection = await this.ss.getCollectionInfo(urlSTAC, collection, token)
 
       const bands = getBands(respCollection);
 
