@@ -9,4 +9,30 @@
     overflow: hidden;
     text-align: center;
     display: block;
+    width: 80%;
+}
+
+.uri-text {
+    padding: 0;
+    font-weight: bold;
+    font-size: 12px;
+    color: white;
+    white-space: nowrap;
+    font-weight: 400;
+    display: block;
+    margin-left: 20px;
+}
+
+.text-short {
+    height: 18px;
+    width: 185px;
+    padding: 0;
+    overflow: hidden;
+    position: relative;
+    display: inline-block;
+    margin: 0 5px 0 5px;
+    text-align: center;
+    text-decoration: none;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }

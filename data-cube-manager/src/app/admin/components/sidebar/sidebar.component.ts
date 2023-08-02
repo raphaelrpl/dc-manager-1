@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { environment } from '../../../../environments/environment'
+import { Store, select } from '@ngrx/store';
+import { AppState } from 'app/app.state';
+import { MatDialog } from '@angular/material/dialog';
+import { TokenModal } from 'app/shared/token/token.component';
 
 declare const $: any;
 declare interface RouteInfo {
@@ -20,11 +24,20 @@ export const ROUTES: RouteInfo[] = [
 })
 export class SidebarComponent implements OnInit {
   menuItems: any[];
+  builderUri: string
 
-  constructor() { }
+  constructor(
+    private store: Store<AppState>,
+    private dialog: MatDialog
+  ) { }
 
   ngOnInit() {
     this.menuItems = ROUTES.filter(menuItem => menuItem);
+    this.store.pipe(select(state => state["app"])).subscribe(({ urlService }) => {
+      if (!!urlService) {
+        this.builderUri = urlService
+      }
+    })
   }
   isMobileMenu() {
       if ($(window).width() > 991) {
@@ -35,5 +48,16 @@ export class SidebarComponent implements OnInit {
 
   getVersion() {
     return environment.appVersion;
+  }
+
+  editService() {
+    const dialogRef = this.dialog.open(TokenModal, {
+        width: '600px',
+        disableClose: true,
+        data: { }
+    })
+    dialogRef.afterClosed().subscribe(result => {
+      console.log("done")
+    })
   }
 }

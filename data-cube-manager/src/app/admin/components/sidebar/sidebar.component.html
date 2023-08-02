@@ -10,6 +10,12 @@
     <span class="version-text">
         Version: {{ getVersion() }}
     </span>
+    <span class="uri-text">
+        <span class="text-short" matTooltip="{{ builderUri }}" >URL: {{ builderUri }}</span>
+        <span style="font-size: 20px; margin-left: 5px; cursor: pointer" (click)="editService()" matTooltip="Edit Service">
+            <mat-icon aria-hidden="false" aria-label="Edit Service" fontIcon="edit"></mat-icon>
+        </span>
+    </span>
 </div>
 <div class="sidebar-wrapper">
     <ul class="nav">
